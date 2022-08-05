@@ -1,0 +1,22 @@
+{
+  "name": "ens-fetch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ensdomains/ensjs": "^3.0.0-alpha.7",
+    "dotenv": "^16.0.1",
+    "fs": "^0.0.1-security",
+    "graceful-fs": "^4.2.10",
+    "junk": "^4.0.0",
+    "path": "^0.12.7",
+    "stream-json": "^1.7.4",
+    "web3": "^1.7.5"
+  }
+}
