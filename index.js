@@ -52,4 +52,4 @@ const readDir = async (num) => {
   });
 };
 
-readDir(4);
+readDir(0);
