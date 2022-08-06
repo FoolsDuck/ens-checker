@@ -1,6 +1,6 @@
 .env
 node_modules
 index_old.js
-.DS_Store
+**/.DS_Store
 /companies
 /big*
