@@ -1,15 +1,14 @@
 const fs = require("graceful-fs");
 const dotenv = require("dotenv").config();
 const Web3 = require("web3");
-const web3 = new Web3(
-  `wss://mainnet.infura.io/ws/v3/${process.env.INFURA_KEY}`
-);
-const nullAddress = "0x0000000000000000000000000000000000000000";
-const re = /^[A-Za-z]+$/;
+const web3 = new Web3("https://cloudflare-eth.com");
 const StreamArray = require("stream-json/streamers/StreamArray");
 const path = require("path");
 const jsonStream = StreamArray.withParser();
 const readline = require("readline");
+
+const nullAddress = "0x0000000000000000000000000000000000000000";
+const re = /^[A-Za-z]+$/;
 
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
@@ -29,7 +28,7 @@ const readDir = async (num) => {
     else {
       files = files.filter((s) => s.includes(".txt"));
 
-      const fileStream = fs.createReadStream(`./domains/${files[num]}`);
+      const fileStream = fs.createReadStream(`./big_domains/${files[num]}`);
 
       const rl = readline.createInterface({
         input: fileStream,
@@ -38,10 +37,10 @@ const readDir = async (num) => {
 
       for await (const line of rl) {
         let domain = line;
-        await delay(1000);
+        await delay(500);
         web3.eth.ens.getOwner(`${domain}.eth`).then(function (contract) {
           if (contract === nullAddress) {
-            appendToFile(`./ens/${domain.length}_ens.txt`, `${domain}\n`);
+            appendToFile(`./new_ens/${domain.length}_ens.txt`, `${domain}\n`);
           }
           console.log(`${domain} checked`);
         });
@@ -53,4 +52,4 @@ const readDir = async (num) => {
   });
 };
 
-readDir(5);
+readDir(4);
