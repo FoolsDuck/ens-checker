@@ -28,7 +28,7 @@ const readDir = async (num) => {
     else {
       files = files.filter((s) => s.includes(".txt"));
 
-      const fileStream = fs.createReadStream(`./big_domains/${files[num]}`);
+      const fileStream = fs.createReadStream(`./domains/${files[num]}`);
 
       const rl = readline.createInterface({
         input: fileStream,
